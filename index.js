@@ -26,7 +26,7 @@ const s3 = new S3({
   accessKeyId: AWS_KEY_ID,
   secretAccessKey: SECRET_ACCESS_KEY
 });
-const objKey = shortid();
+const objKey = FILE_NAME;
 const paths = klawSync(SOURCE_DIR, {
   nodir: true
 });
@@ -44,7 +44,7 @@ function upload(params) {
 function run() {
   return Promise.all(
     paths.map(p => {
-      const Key = p.path.replace(path.join(process.cwd(), SOURCE_DIR), FILE_NAME);
+      const Key = p.path.replace(path.join(process.cwd(), SOURCE_DIR), objKey);
       const fileStream = fs.createReadStream(p.path);
       const params = {
         Bucket: BUCKET,
