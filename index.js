@@ -64,6 +64,7 @@ run()
     core.info(`object locations - ${locations}`);
     core.setOutput('object_key', objKey);
     core.setOutput('object_locations', locations);
+    core.setOutput('file_name', FILE_NAME);
   })
   .catch(err => {
     core.error(err);
