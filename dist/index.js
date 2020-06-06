@@ -2468,7 +2468,6 @@ function run() {
         Key,
         ContentType: lookup(p.path) || 'text/plain'
       };
-      core.info(`Key - ${KEY}`)
       return upload(params);
     })
   );
