@@ -18,6 +18,9 @@ const BUCKET = core.getInput('aws_bucket', {
 const SOURCE_DIR = core.getInput('source_dir', {
   required: true
 });
+const FILE_NAME = core.getInput('file_name', {
+  required: true
+});
 
 const s3 = new S3({
   accessKeyId: AWS_KEY_ID,
@@ -41,7 +44,7 @@ function upload(params) {
 function run() {
   return Promise.all(
     paths.map(p => {
-      const Key = p.path.replace(path.join(process.cwd(), SOURCE_DIR), objKey);
+      const Key = p.path.replace(path.join(process.cwd(), SOURCE_DIR), FILE_NAME);
       const fileStream = fs.createReadStream(p.path);
       const params = {
         Bucket: BUCKET,
