@@ -18,7 +18,7 @@ inputs:
     required: true
     description: 'directory to upload'
   file_name:
-    require: true
+    required: true
     description: 'file_name'
 runs:
   using: 'node12'
